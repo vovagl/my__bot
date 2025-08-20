@@ -42,4 +42,12 @@ bot.on("message", async ctx =>{
     })
 
 
-bot.launch()
+export default async function handler(req, res) {
+  try {
+    await bot.handleUpdate(req.body, res);
+    res.status(200).send("ok");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+}
