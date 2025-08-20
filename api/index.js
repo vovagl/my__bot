@@ -44,10 +44,10 @@ bot.on("message", async ctx =>{
 
 export default async function handler(req, res) {
   try {
-    await bot.handleUpdate(req.body, res);
+    await bot.handleUpdate(req.body);
     res.status(200).send("ok");
   } catch (err) {
-    console.error(err);
+    console.error("Ошибка serverless функции:", err);
     res.status(500).send("Server error");
   }
 }
